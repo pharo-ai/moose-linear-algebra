@@ -10,7 +10,9 @@ BaselineOfMLLinearAlgebra >> baseline: spec [
 	spec
 		for: #(common)
 		do: [ 
-			spec package: 'MLLinearAlgebra'.
+			spec 
+				package: 'MLLinearAlgebra';
+				package: 'MLLinearAlgebra-Tests' with: [ spec requires: #(MLLinearAlgebra) ].
 			spec 
 				group: 'Core' 						with: #('MLLinearAlgebra');
 				group: 'Tests' 						with: #('MLLinearAlgebra' 'MLLinearAlgebra-Tests');
