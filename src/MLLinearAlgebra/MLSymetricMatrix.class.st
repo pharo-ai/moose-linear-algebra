@@ -73,6 +73,16 @@ MLSymetricMatrix >> isSymetric [
 ]
 
 { #category : #accessing }
+MLSymetricMatrix >> partialColumns [
+	^ partialColumns
+]
+
+{ #category : #accessing }
+MLSymetricMatrix >> partialColumns: anObject [
+	partialColumns := anObject
+]
+
+{ #category : #accessing }
 MLSymetricMatrix >> rowSize [
 	
 	^partialColumns size	"since we are square"

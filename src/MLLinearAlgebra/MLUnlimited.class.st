@@ -1,3 +1,22 @@
+"
+An **unlimited** is a `Magnitude` which could be positive or negative.
+
+When positive, it's always greater than any other magnitude.
+When negative, it's always smaller than any other magnitude.
+
+## Examples
+
+MLUnlimited positive < 0.  ""true""
+MLUnlimited positive > 0. ""true""
+MLUnlimited positive > 1. ""true""
+MLUnlimited positive > 2. ""true""
+
+MLUnlimited negative > 0.  ""false""
+MLUnlimited negative < 0.  ""true""
+MLUnlimited negative < 1.  ""true""
+MLUnlimited negative < 2.  ""true""
+
+"
 Class {
 	#name : #MLUnlimited,
 	#superclass : #Magnitude,
@@ -87,4 +106,15 @@ MLUnlimited >> negative [
 MLUnlimited >> positive [
 
 	^positive
+]
+
+{ #category : #printing }
+MLUnlimited >> printOn: aStream [
+	" Private - See superimplementor's comment "
+
+	super printOn: aStream.
+	aStream 
+		<< $(;
+		<< (self positive ifTrue: [ $+ ] ifFalse: [ $- ]);
+		<< $).
 ]
