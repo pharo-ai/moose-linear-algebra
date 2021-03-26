@@ -724,7 +724,7 @@ AIMatrix >> printOn: aStream [
 				do: [ :column | 
 					aStream position > tooMany
 						ifTrue: [ aStream
-								nextPutAll: (#etc << #dialogs >> '...etc...') asString;
+								nextPutAll: '...etc...';
 								nextPutAll: '))'.
 							^ self ].
 					aStream print: (self at: row and: column) ]
