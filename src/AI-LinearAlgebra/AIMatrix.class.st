@@ -282,6 +282,15 @@ AIMatrix >> asArray [
 	^array
 ]
 
+{ #category : #printing }
+AIMatrix >> asDenseString [
+	" Answer a <String> complete (or dense) representation of the receiver "
+
+	^ (String streamContents: [ : stream | 
+		self storeDenseTextOn: stream ]) 
+			allButFirst: 4.
+]
+
 { #category : #accessing }
 AIMatrix >> at: row and: column [
 	"Answer the vakue at the given indices."
