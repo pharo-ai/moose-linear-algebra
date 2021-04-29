@@ -1,1 +1,1 @@
-SmalltalkCISpec {  #loading : [    SCIMetacelloLoadSpec {      #baseline : 'MLLinearAlgebra',      #directory : 'src',      #platforms : [ #pharo ]    }  ],  #testing : {    #coverage : {      #packages : [ 'MLLinearAlgebra*' ]    }  }}
+SmalltalkCISpec {  #loading : [    SCIMetacelloLoadSpec {      #baseline : 'AILinearAlgebra',      #directory : 'src',      #platforms : [ #pharo ]    }  ],  #testing : {    #coverage : {      #packages : [ 'AILinearAlgebra*' ]    }  }}
