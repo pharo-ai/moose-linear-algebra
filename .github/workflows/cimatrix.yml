@@ -6,8 +6,6 @@ env:
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -28,8 +26,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.1.2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: ${{matrix.os}}-${{matrix.smalltalk}}
