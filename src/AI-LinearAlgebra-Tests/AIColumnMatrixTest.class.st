@@ -13,7 +13,7 @@ AIColumnMatrixTest >> matrixClass [
 	^AIColumnMatrix
 ]
 
-{ #category : #fixture }
+{ #category : #tests }
 AIColumnMatrixTest >> testColumns [
 	
 	|m|
@@ -22,7 +22,7 @@ AIColumnMatrixTest >> testColumns [
 	self assert: (m at: 3 and: 1)  equals: 2.
 ]
 
-{ #category : #fixture }
+{ #category : #tests }
 AIColumnMatrixTest >> testinitialization [ 
 	
 	|m|
