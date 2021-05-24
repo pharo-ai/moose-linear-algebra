@@ -12,3 +12,21 @@ AIColumnMatrixTest >> matrixClass [
 	
 	^AIColumnMatrix
 ]
+
+{ #category : #fixture }
+AIColumnMatrixTest >> testColumns [
+	
+	|m|
+	m := AIColumnMatrix new columns: #( #(0 1 2) #(2 3 4)).
+	self assert: (m at: 1 and: 2) equals: 2.
+	self assert: (m at: 3 and: 1)  equals: 2.
+]
+
+{ #category : #fixture }
+AIColumnMatrixTest >> testinitialization [ 
+	
+	|m|
+	m := AIColumnMatrix  new initializeRows: 3 columns: 4.
+	self assert: m rowSize equals: 3.
+	self assert: m columnSize  equals: 4.
+]
