@@ -4,6 +4,9 @@ Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is dist
 Class {
 	#name : #AIMatrix,
 	#superclass : #Object,
+	#instVars : [
+		'Rows'
+	],
 	#category : #'AI-LinearAlgebra-Matrix'
 }
 
@@ -12,13 +15,6 @@ AIMatrix class >> browserIcon [
 "Answer icon to be displayed with matrix classes."
 	
 	^ nil
-]
-
-{ #category : #'instance creation' }
-AIMatrix class >> new [
-	"Create a new matrix with dimension zero."
-	
-	^self new: Number zero
 ]
 
 { #category : #'instance creation' }
@@ -80,9 +76,7 @@ AIMatrix class >> readFromSparseText: aStream [
 AIMatrix class >> rows: m columns: n [
 	"Create a new matrix with m rows and n columns."
 	
-	^(self basicNew)
-		initializeRows: m columns: n;
-		yourself
+	^ self new initializeRows: m columns: n
 ]
 
 { #category : #'instance creation' }
@@ -295,7 +289,7 @@ AIMatrix >> asDenseString [
 AIMatrix >> at: row and: column [
 	"Answer the vakue at the given indices."
 	
-	^self subclassResponsibility
+	^(Rows at: row) at: column
 ]
 
 { #category : #arithmetic }
@@ -332,7 +326,7 @@ AIMatrix >> at: row and: column multiply: aNumber [
 AIMatrix >> at: row and: column put: aNumber [
 	"Store the vakue at the given indices."
 	
-	^self subclassResponsibility
+	^(Rows at: row) at: column put: aNumber
 ]
 
 { #category : #arithmetic }
@@ -441,7 +435,7 @@ AIMatrix >> columnAt: columnIndex put: vector [
 { #category : #accessing }
 AIMatrix >> columnSize [
 	
-	^self subclassResponsibility
+	^Rows last size
 ]
 
 { #category : #'accessing vectorwise' }
@@ -624,7 +618,10 @@ AIMatrix >> hash [
 { #category : #'initialize-release' }
 AIMatrix >> initializeRows: m columns: n [
 	
-	^self subclassResponsibility
+	Rows := Array new: m.
+	1 to: m do: [:index | 
+		Rows at: index put: 
+		(self vectorSpecies new: n)]
 ]
 
 { #category : #enumerating }
@@ -927,7 +924,7 @@ AIMatrix >> rowAt: rowIndex put: vector [
 { #category : #accessing }
 AIMatrix >> rowSize [
 	
-	^self subclassResponsibility
+	^Rows size
 ]
 
 { #category : #'accessing vectorwise' }
