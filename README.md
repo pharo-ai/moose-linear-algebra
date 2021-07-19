@@ -1,4 +1,4 @@
-![Build status](https://github.com/pharo-ai/linear-algebra/workflows/CI/badge.svg)
+![Build status](https://github.com/pharo-ai/linear-algebra/actions/workflows/cimatrix.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/pharo-ai/linear-algebra/badge.svg?branch=master)](https://coveralls.io/github/pharo-ai/linear-algebra?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/pharo-ai/linear-algebra/master/LICENSE)
 
