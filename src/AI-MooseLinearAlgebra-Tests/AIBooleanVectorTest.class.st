@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'v'
 	],
-	#category : #'AI-LinearAlgebra-Tests'
+	#category : #'AI-MooseLinearAlgebra-Tests'
 }
 
 { #category : #running }

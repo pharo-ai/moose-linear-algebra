@@ -4,7 +4,7 @@ Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is dist
 Class {
 	#name : #AIAccumulatorTest,
 	#superclass : #TestCase,
-	#category : #'AI-LinearAlgebra-Tests'
+	#category : #'AI-MooseLinearAlgebra-Tests'
 }
 
 { #category : #test }

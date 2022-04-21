@@ -8,7 +8,7 @@ Class {
 		'v',
 		'w'
 	],
-	#category : #'AI-LinearAlgebra-Tests'
+	#category : #'AI-MooseLinearAlgebra-Tests'
 }
 
 { #category : #testing }

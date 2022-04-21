@@ -4,7 +4,7 @@ A MLUnlimitedTest is a test class for testing the behavior of MLUnlimited
 Class {
 	#name : #AIUnlimitedTest,
 	#superclass : #TestCase,
-	#category : #'AI-LinearAlgebra-Tests-Mapping'
+	#category : #'AI-MooseLinearAlgebra-Tests-Mapping'
 }
 
 { #category : #test }

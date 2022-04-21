@@ -1,7 +1,7 @@
 Class {
 	#name : #AIDiagonalMatrixTest,
 	#superclass : #TestCase,
-	#category : #'AI-LinearAlgebra-Tests'
+	#category : #'AI-MooseLinearAlgebra-Tests'
 }
 
 { #category : #tests }
