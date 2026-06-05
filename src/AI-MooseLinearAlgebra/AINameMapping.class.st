@@ -2,23 +2,25 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AINameMapping,
-	#superclass : #AIMapping,
+	#name : 'AINameMapping',
+	#superclass : 'AIMapping',
 	#instVars : [
 		'names',
 		'comparisonBlock'
 	],
-	#category : #'AI-MooseLinearAlgebra-Mapping'
+	#category : 'AI-MooseLinearAlgebra-Mapping',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Mapping'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AINameMapping class >> new [
 	^ super new
 		forEquality;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AINameMapping class >> newUsing: aComparisonBlock [
 	^ self new
 		initialize;
@@ -26,7 +28,7 @@ AINameMapping class >> newUsing: aComparisonBlock [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AINameMapping >> add: name [
 	
 	(self includesName: name) ifTrue: [self error].
@@ -34,7 +36,7 @@ AINameMapping >> add: name [
 	^self size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINameMapping >> atKey: key ifAbsent: exceptionBlock [
 	
 	^(key
@@ -44,7 +46,7 @@ AINameMapping >> atKey: key ifAbsent: exceptionBlock [
 		ifFalse: [exceptionBlock value]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AINameMapping >> do: aBlock [
 	
 	1
@@ -52,31 +54,31 @@ AINameMapping >> do: aBlock [
 		do: [:each | aBlock value: each]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINameMapping >> forEquality [
 	
 	self setComparisonBlock: [:a :b | a = b]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINameMapping >> forIdentity [
 	
 	self setComparisonBlock: [:a :b | a == b]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AINameMapping >> includesName: name [
 	
 	^names anySatisfy: [:each | comparisonBlock value: each value: name]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINameMapping >> initialize [
 	
 	names := OrderedCollection new
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINameMapping >> keyForName: name ifAbsent: exceptionBlock [
 	^ name isInteger
 		ifTrue: [ name ]
@@ -87,37 +89,37 @@ AINameMapping >> keyForName: name ifAbsent: exceptionBlock [
 			^ idx ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINameMapping >> keyOf: anIndex ifAbsent: exceptionBlock [
 	
 	^self atKey: anIndex ifAbsent: exceptionBlock
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINameMapping >> keys [
 	
 	^names
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINameMapping >> nameForKey: key [
 	
 	^names at: key
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINameMapping >> names [
 	
 	^names
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINameMapping >> setComparisonBlock: aComparisonBlock [
 	
 	^comparisonBlock := aComparisonBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINameMapping >> size [
 	
 	^names size

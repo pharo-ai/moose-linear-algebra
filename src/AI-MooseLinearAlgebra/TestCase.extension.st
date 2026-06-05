@@ -1,6 +1,6 @@
-Extension { #name : #TestCase }
+Extension { #name : 'TestCase' }
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 TestCase >> assertBlock: aBlock raises: anExceptionalEvent [
 	
 	^[aBlock value.

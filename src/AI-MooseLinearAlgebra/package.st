@@ -1,1 +1,1 @@
-Package { #name : #'AI-MooseLinearAlgebra' }
+Package { #name : 'AI-MooseLinearAlgebra' }

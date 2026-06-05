@@ -1,44 +1,46 @@
 Class {
-	#name : #AIBidirectionalMap,
-	#superclass : #Collection,
+	#name : 'AIBidirectionalMap',
+	#superclass : 'Collection',
 	#instVars : [
 		'backwards',
 		'forwards'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> equalityNew: capacity [
 	
 	^self basicNew initialize: capacity type: Dictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> identityNew [
 	
 	^self identityNew: 5
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> identityNew: capacity [
 	
 	^self basicNew initialize: capacity type: IdentityDictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> new [
 	
 	^self new: 5
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> new: size [
 	
 	^self equalityNew: size
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIBidirectionalMap class >> withIndicesAndElements: aCollection [
 	
 	| map |
@@ -47,7 +49,7 @@ AIBidirectionalMap class >> withIndicesAndElements: aCollection [
 	^map
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AIBidirectionalMap >> add: anAssociation [
 	
 	self
@@ -55,19 +57,19 @@ AIBidirectionalMap >> add: anAssociation [
 		put: anAssociation value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> associations [
 	
 	^forwards associations asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> at: anObject [
 	
 	^self at: anObject ifAbsent: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> at: anObject ifAbsent: exceptionBlock [
 	
 	^forwards
@@ -75,7 +77,7 @@ AIBidirectionalMap >> at: anObject ifAbsent: exceptionBlock [
 		ifAbsent: [backwards at: anObject ifAbsent: exceptionBlock]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> at: key put: value [
 	
 	(backwards includesKey: value)
@@ -87,19 +89,19 @@ AIBidirectionalMap >> at: key put: value [
 	^value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atKey: key [
 	
 	^self atKey: key ifAbsent: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atKey: key ifAbsent: exceptionBlock [
 	
 	^forwards at: key ifAbsent: exceptionBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atKey: key ifAbsentPut: valueBlock [
 	
 	| value |
@@ -112,19 +114,19 @@ AIBidirectionalMap >> atKey: key ifAbsentPut: valueBlock [
 	^value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atValue: value [
 	
 	^self atValue: value ifAbsent: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atValue: value ifAbsent: exceptionBlock [
 	
 	^backwards at: value ifAbsent: exceptionBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> atValue: value ifAbsentPut: keyBlock [
 	
 	| key |
@@ -137,7 +139,7 @@ AIBidirectionalMap >> atValue: value ifAbsentPut: keyBlock [
 	^key
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIBidirectionalMap >> checkInvariant [
 	
 	^forwards size = backwards size
@@ -146,25 +148,25 @@ AIBidirectionalMap >> checkInvariant [
 				and: [(forwards values \ backwards keys) isEmpty]]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIBidirectionalMap >> do: aBlock [
 	
 	forwards do: aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIBidirectionalMap >> includes: value [
 	
 	^forwards includes: value
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIBidirectionalMap >> includesKey: key [
 	
 	^backwards includes: key
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIBidirectionalMap >> initialize: capacity type: typeClass [
 	
 	forwards := typeClass new: capacity.
@@ -172,7 +174,7 @@ AIBidirectionalMap >> initialize: capacity type: typeClass [
 	[self checkInvariant] assert
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 AIBidirectionalMap >> postCopy [
 	"Make sure to copy the contents fully."
 	
@@ -181,13 +183,13 @@ AIBidirectionalMap >> postCopy [
 	backwards := backwards copy
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AIBidirectionalMap >> remove: anObject ifAbsent: exceptionBlock [
 	
 	self shouldNotImplement
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AIBidirectionalMap >> removeKey: key [
 	
 	^self
@@ -195,7 +197,7 @@ AIBidirectionalMap >> removeKey: key [
 		ifAbsent: [self error: 'key not found']
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AIBidirectionalMap >> removeKey: key ifAbsent: exceptionBlock [
 	
 	| value |
@@ -205,7 +207,7 @@ AIBidirectionalMap >> removeKey: key ifAbsent: exceptionBlock [
 	^value
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AIBidirectionalMap >> removeValue: value [
 	
 	^self
@@ -213,7 +215,7 @@ AIBidirectionalMap >> removeValue: value [
 		ifAbsent: [self error: 'value not found']
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AIBidirectionalMap >> removeValue: value ifAbsent: exceptionBlock [
 	
 	| key |
@@ -223,7 +225,7 @@ AIBidirectionalMap >> removeValue: value ifAbsent: exceptionBlock [
 	^key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIBidirectionalMap >> size [
 	
 	^forwards size

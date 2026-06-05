@@ -2,26 +2,28 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMatrix,
-	#superclass : #Object,
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#name : 'AIMatrix',
+	#superclass : 'Object',
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix class >> browserIcon [
 "Answer icon to be displayed with matrix classes."
 	
 	^ nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> new [
 	"Create a new matrix with dimension zero."
 	
 	^self new: Number zero
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> new: numberOrPoint [
 	"Create a new square matrix with the given dimension."
 	
@@ -32,7 +34,7 @@ AIMatrix class >> new: numberOrPoint [
 		columns: point y
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> new: numberOrPoint withAll: value [
 	
 	^(self new: numberOrPoint)
@@ -40,7 +42,7 @@ AIMatrix class >> new: numberOrPoint withAll: value [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> readFromDenseText: aStream [
 	| m n matrix |
 	m := Integer readFrom: aStream skipSeparators.
@@ -50,7 +52,7 @@ AIMatrix class >> readFromDenseText: aStream [
 	^ matrix
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> readFromSparseText: aStream [
 	
 	| m n matrix |
@@ -76,7 +78,7 @@ AIMatrix class >> readFromSparseText: aStream [
 	^matrix
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> rows: m columns: n [
 	"Create a new matrix with m rows and n columns."
 	
@@ -85,7 +87,7 @@ AIMatrix class >> rows: m columns: n [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> rows: m columns: n withAll: value [
 	
 	^(self rows: m columns: n)
@@ -93,7 +95,7 @@ AIMatrix class >> rows: m columns: n withAll: value [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix class >> switch: anObject caseMatrix: matrixBlock caseNestedCollection: nestedColletionBlock caseCollection: collectionBlock default: defaultBlock [
 	(anObject isKindOf: AIMatrix) ifTrue: [ ^ matrixBlock value ].
 	
@@ -104,19 +106,19 @@ AIMatrix class >> switch: anObject caseMatrix: matrixBlock caseNestedCollection:
 	^ defaultBlock value
 ]
 
-{ #category : #'constants access' }
+{ #category : 'constants access' }
 AIMatrix class >> unity [
 	
 	^AIMatrixCoercion with: 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix class >> vectorSpecies [
 	
 	^AIArrayVector
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrix class >> withAll: object [
 	
 	| dimension |
@@ -131,19 +133,19 @@ AIMatrix class >> withAll: object [
 		yourself
 ]
 
-{ #category : #'constants access' }
+{ #category : 'constants access' }
 AIMatrix class >> zero [
 	
 	^AIMatrixCoercion with: 0
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> * aNumber [
 	
 	^aNumber productFromMatrix: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> *= aNumber [
 	
 	^self
@@ -151,7 +153,7 @@ AIMatrix >> *= aNumber [
 		affect: [:a :b | a * b]
 ]
 
-{ #category : #'matrix functions' }
+{ #category : 'matrix functions' }
 AIMatrix >> *~ aMatrix [
 	"Answer the matrix multiplication of the reciever with the argument."
 	
@@ -173,13 +175,13 @@ AIMatrix >> *~ aMatrix [
 	^newMatrix
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> + aNumber [
 	
 	^aNumber sumFromMatrix: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> += aNumber [
 	
 	^self
@@ -187,13 +189,13 @@ AIMatrix >> += aNumber [
 		affect: [:a :b | a + b]
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> - aNumber [
 	
 	^aNumber differenceFromMatrix: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> -= aNumber [
 	
 	^self
@@ -201,13 +203,13 @@ AIMatrix >> -= aNumber [
 		affect: [:a :b | a - b]
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> / aNumber [
 	
 	^aNumber quotientFromMatrix: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> /= aNumber [
 	
 	^self
@@ -215,7 +217,7 @@ AIMatrix >> /= aNumber [
 		affect: [:a :b | a / b]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIMatrix >> = matrix [
 	"Answer whether the dimension of the receiver is the same as otherMatrix' dimension,
 	and each of the receiver's elements equal the corresponding element of otherMatrix."
@@ -232,47 +234,47 @@ AIMatrix >> = matrix [
 							true]]]
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> adaptToNumber: rcvr andSend: selector [
 
 	^ self perform: selector with: rcvr
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> adaptToPoint: rcvr andSend: selector [
 
 	^ self perform: selector with: rcvr
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> addColumn [
 	"Add a column. Must implement if isExtendable returns true."
 	
 	self shouldNotImplement
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> addColumnBeforeIndex: anIndex [
 	"Insert a column before anIndex. Must implement if isResizebale returns true."
 	
 	self shouldNotImplement
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> addRow [
 	"Add a row. Must implement if isExtendable returns true."
 	
 	self shouldNotImplement
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> addRowBeforeIndex: anIndex [
 	"Insert a row before anIndex. Must implement if isResizebale returns true."
 	
 	self shouldNotImplement
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIMatrix >> asArray [
 	
 	| array stream |
@@ -282,7 +284,7 @@ AIMatrix >> asArray [
 	^array
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMatrix >> asDenseString [
 	" Answer a <String> complete (or dense) representation of the receiver "
 
@@ -291,14 +293,14 @@ AIMatrix >> asDenseString [
 			allButFirst: 4.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> at: row and: column [
 	"Answer the vakue at the given indices."
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> at: row and: column add: aNumber [
 	"Add aNumber to the element at row and column.  Answer the sum."
 	
@@ -308,7 +310,7 @@ AIMatrix >> at: row and: column add: aNumber [
 		put: (self at: row and: column) + aNumber
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> at: row and: column divide: aNumber [
 	"Divide the element at row and column by aNumber.  Answer the quotient."
 	
@@ -318,7 +320,7 @@ AIMatrix >> at: row and: column divide: aNumber [
 		put: (self at: row and: column) / aNumber
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> at: row and: column multiply: aNumber [
 	"Multiply aNumber with the element at row and column.  Answer the product."
 	
@@ -328,14 +330,14 @@ AIMatrix >> at: row and: column multiply: aNumber [
 		put: (self at: row and: column) * aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> at: row and: column put: aNumber [
 	"Store the vakue at the given indices."
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> at: row and: column subtract: aNumber [
 	"Subtract aNumber from the element at row and column.  Answer the difference."
 	
@@ -345,7 +347,7 @@ AIMatrix >> at: row and: column subtract: aNumber [
 		put: (self at: row and: column) - aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> atAllPut: object [
 	
 	self class
@@ -381,7 +383,7 @@ AIMatrix >> atAllPut: object [
 	^object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> atPoint: rowColumnCoordinate [
 	
 	^self
@@ -389,7 +391,7 @@ AIMatrix >> atPoint: rowColumnCoordinate [
 		and: rowColumnCoordinate y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> atPoint: rowColumnCoordinate put: aNumber [
 	
 	^self
@@ -398,19 +400,19 @@ AIMatrix >> atPoint: rowColumnCoordinate put: aNumber [
 		put: aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix >> checkInvariant [
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #coercing }
+{ #category : 'coercing' }
 AIMatrix >> coerce: aNumber [
 	
 	^AIMatrixCoercion with: aNumber
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> collect: aBlock [
 	
 	| newMatrix |
@@ -425,26 +427,26 @@ AIMatrix >> collect: aBlock [
 	^newMatrix
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> columnAt: columnIndex [
 	
 	^AIMatrixPath column: columnIndex on: self
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> columnAt: columnIndex put: vector [
 	
 	vector doWithIndex: [:each :row | self at: row and: columnIndex put: each].
 	^vector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> columnSize [
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> columns [
 	
 	| array |
@@ -459,33 +461,33 @@ AIMatrix >> columns [
 	^array
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 AIMatrix >> copyEmpty [
 	"Answer a copy of the receiver that contains no elements."
 	
 	^self copyEmpty: self dimension
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 AIMatrix >> copyEmpty: dimension [
 	"Answer a copy of the receiver that contains no elements."
 	
 	^self species new: dimension
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 AIMatrix >> deepCopy [
 	
 	^self species withAll: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> density [
 	
 	^self sparseSize / self size
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> determinant [
 	
 	| a11 a12 a21 a22 |
@@ -497,43 +499,43 @@ AIMatrix >> determinant [
 	^a11 * a22 - (a12 * a21)
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> diagonal [
 	
 	^AIMatrixPath diagonalOn: self
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromDouble: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromFixedPoint: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromFloat: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromFraction: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromInteger: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromMatrix: aMatrix [
 	
 	^aMatrix
@@ -541,31 +543,31 @@ AIMatrix >> differenceFromMatrix: aMatrix [
 		collect: [:a :b | a - b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromNumber: aNumber [
 	
 	^self collect: [:b | aNumber - b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromPoint: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> differenceFromSmallDouble: aNumber [
 	
 	^self differenceFromNumber: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> dimension [
 	
 	^self rowSize @ self columnSize
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> do: aBlock [
 	
 	self
@@ -573,7 +575,7 @@ AIMatrix >> do: aBlock [
 	^self
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> doSparseWithIndices: eachRowColumnBlock [
 	
 	self
@@ -584,7 +586,7 @@ AIMatrix >> doSparseWithIndices: eachRowColumnBlock [
 	^self
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> doWithIndices: eachRowColumnBlock [
 	
 	self
@@ -596,38 +598,38 @@ AIMatrix >> doWithIndices: eachRowColumnBlock [
 				value: column]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> first [
 	
 	^self at: 1 and: 1
 ]
 
-{ #category : #coercing }
+{ #category : 'coercing' }
 AIMatrix >> generality [
 	
 	^240
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> hasDimension: aDimension [
 	
 	^self dimension = aDimension
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIMatrix >> hash [
 	
 	^(self dimension hash bitXor: (self at: 1) hash)
 		bitXor: (self at: self dimension) hash
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrix >> initializeRows: m columns: n [
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> inject: value into: aBlock [
 	
 	| result |
@@ -636,13 +638,13 @@ AIMatrix >> inject: value into: aBlock [
 	^result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isComplex [
 	
 	^false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isDiagonal [
 	"Answer if the reciever is a diagonal matrix."
 	
@@ -653,20 +655,20 @@ AIMatrix >> isDiagonal [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isResizeable [
 	
 	^false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isSquare [
 	"Answer if the reciever is a square matrix."
 	
 	^self rowSize = self columnSize
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isSymetric [
 	"Answer if the reciever is a symetric matrix."
 	
@@ -682,7 +684,7 @@ AIMatrix >> isSymetric [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isZero [
 	"Answer if the reciever contains no non-zero numbers."
 	
@@ -690,13 +692,13 @@ AIMatrix >> isZero [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> isZeroAt: row and: column [
 	
 	^(self at: row and: column) isZero
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> last [
 	
 	^self
@@ -704,17 +706,17 @@ AIMatrix >> last [
 		and: self columnSize
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix >> noMatchError [
 	self error: 'No match'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix >> noModificationError [
 	self error: 'No modification'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMatrix >> printOn: aStream [
 	"Append to the argument aStream a sequence of characters that identifies the matrix."
 
@@ -743,37 +745,37 @@ AIMatrix >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromDouble: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromFixedPoint: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromFloat: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromFraction: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromInteger: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromMatrix: aMatrix [
 	
 	^aMatrix
@@ -781,25 +783,25 @@ AIMatrix >> productFromMatrix: aMatrix [
 		collect: [:a :b | a * b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromNumber: aNumber [
 	
 	^self collect: [:b | aNumber * b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromPoint: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> productFromSmallDouble: aNumber [
 	
 	^self productFromNumber: aNumber
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> putWithIndices: rowColumnBlock [
 	
 	self
@@ -812,37 +814,37 @@ AIMatrix >> putWithIndices: rowColumnBlock [
 	^self
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromDouble: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromFixedPoint: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromFloat: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromFraction: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromInteger: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromMatrix: aMatrix [
 	
 	^aMatrix
@@ -850,25 +852,25 @@ AIMatrix >> quotientFromMatrix: aMatrix [
 		collect: [:a :b | a / b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromNumber: aNumber [
 	
 	^self collect: [:b | aNumber / b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromPoint: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> quotientFromSmallDouble: aNumber [
 	
 	^self quotientFromNumber: aNumber
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> reciprocal [
 	
 	^self
@@ -879,44 +881,44 @@ AIMatrix >> reciprocal [
 				ifFalse: [each reciprocal]]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIMatrix >> remap: mapping [
 	
 	^AIMappedMatrix on: self rowMap: mapping columnMap: mapping
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> removeColumnAtIndex: anIndex [
 	
 	self shouldNotImplement
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 AIMatrix >> removeRowAtIndex: anIndex [
 	
 	self shouldNotImplement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrix >> respondsToArithmetic [
 	"We are arithmetic, yes."
 	
 	^true
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIMatrix >> roundTo: aNumber [
 	
 	^self collect: [:each | each roundTo: aNumber]
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> rowAt: rowIndex [
 	
 	^AIMatrixPath row: rowIndex on: self
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> rowAt: rowIndex put: vector [
 	
 	vector
@@ -924,13 +926,13 @@ AIMatrix >> rowAt: rowIndex put: vector [
 	^vector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> rowSize [
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIMatrix >> rows [
 	
 	| array |
@@ -945,13 +947,13 @@ AIMatrix >> rows [
 	^array
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> size [
 	
 	^self rowSize * self columnSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrix >> sparseSize [
 	
 	| tally |
@@ -960,13 +962,13 @@ AIMatrix >> sparseSize [
 	^tally
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix >> species [
 	
 	^self class
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMatrix >> storeDenseTextOn: aStream [
 	"Append to the argument aStream a sequence of characters 
 	that identifies the collection."
@@ -986,7 +988,7 @@ AIMatrix >> storeDenseTextOn: aStream [
 			aStream cr]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMatrix >> storeSparseTextOn: aStream [
 	"Append to the argument aStream a sequence of characters 
 	that identifies the collection."
@@ -1014,37 +1016,37 @@ AIMatrix >> storeSparseTextOn: aStream [
 						cr]]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromDouble: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromFixedPoint: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromFloat: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromFraction: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromInteger: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromMatrix: aMatrix [
 	
 	^aMatrix
@@ -1052,37 +1054,37 @@ AIMatrix >> sumFromMatrix: aMatrix [
 		collect: [:a :b | a + b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromNumber: aNumber [
 	
 	^self collect: [:b | aNumber + b]
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromPoint: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 AIMatrix >> sumFromSmallDouble: aNumber [
 	
 	^self sumFromNumber: aNumber
 ]
 
-{ #category : #'matrix functions' }
+{ #category : 'matrix functions' }
 AIMatrix >> transposed [
 	
 	^AIMatrixView transposeOn: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrix >> vectorSpecies [
 	
 	^self class vectorSpecies
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> with: aMatrix affect: eachOtherBlock [
 	
 	[aMatrix hasDimension: self dimension] assert.
@@ -1094,7 +1096,7 @@ AIMatrix >> with: aMatrix affect: eachOtherBlock [
 				value: (aMatrix at: row and: column)]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> with: aMatrix collect: eachOtherBlock [
 	
 	| newMatrix |
@@ -1109,7 +1111,7 @@ AIMatrix >> with: aMatrix collect: eachOtherBlock [
 	^newMatrix
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> with: aMatrix do: eachOtherBlock [
 	
 	[aMatrix hasDimension: self dimension] assert.
@@ -1121,7 +1123,7 @@ AIMatrix >> with: aMatrix do: eachOtherBlock [
 				value: (aMatrix at: row and: column)]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrix >> withIndices: aBlock [
 	
 	1

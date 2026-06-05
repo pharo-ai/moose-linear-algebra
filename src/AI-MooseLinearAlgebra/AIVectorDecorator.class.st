@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIVectorDecorator,
-	#superclass : #AIVector,
+	#name : 'AIVectorDecorator',
+	#superclass : 'AIVector',
 	#instVars : [
 		'vector'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIVectorDecorator class >> on: aVector [
 	
 	^(self basicNew)
@@ -18,37 +20,37 @@ AIVectorDecorator class >> on: aVector [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIVectorDecorator >> at: index [
 	
 	^vector at: index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIVectorDecorator >> at: index put: aNumber [
 	
 	^vector at: index put: aNumber
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIVectorDecorator >> initializeSize: aSize [
 	
 	^self shouldNotImplement
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIVectorDecorator >> setVector: aVector [
 	
 	^vector := aVector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIVectorDecorator >> size [
 	
 	^vector size
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIVectorDecorator >> species [
 	
 	^vector species

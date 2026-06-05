@@ -18,8 +18,8 @@ MLUnlimited negative < 2.  ""true""
 
 "
 Class {
-	#name : #AIUnlimited,
-	#superclass : #Magnitude,
+	#name : 'AIUnlimited',
+	#superclass : 'Magnitude',
 	#instVars : [
 		'positive'
 	],
@@ -27,41 +27,43 @@ Class {
 		'Negative',
 		'Positive'
 	],
-	#category : #'AI-MooseLinearAlgebra-Mapping'
+	#category : 'AI-MooseLinearAlgebra-Mapping',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Mapping'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIUnlimited class >> negative [
 
 	^Negative ifNil: [Negative := super new initializeWith: false]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIUnlimited class >> new [
 
 	^self positive
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIUnlimited class >> positive [
 
 	^Positive ifNil: [Positive := super new initializeWith: true ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIUnlimited >> < aMagnitude [
 	"Any number is larger than Unlimited negative, except Unlimited negative itself."
 
 	^(positive not) and: [ self ~~ aMagnitude ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIUnlimited >> = aMagnitude [
 	
 	^self == aMagnitude
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIUnlimited >> adaptToNumber: rcvr andSend: selector [
 	selector = #<
 		ifTrue: [ self positive
@@ -73,7 +75,7 @@ AIUnlimited >> adaptToNumber: rcvr andSend: selector [
 				ifFalse: [ ^ true ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIUnlimited >> hash [
 
 	^positive 
@@ -81,14 +83,14 @@ AIUnlimited >> hash [
 		ifFalse: [ 16rBFFF ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIUnlimited >> initializeWith: isPositive [
 
 	positive := isPositive.
 	^self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 AIUnlimited >> negated [
 
 	^self positive 
@@ -96,19 +98,19 @@ AIUnlimited >> negated [
 		ifFalse: [ self class positive ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIUnlimited >> negative [
 
 	^positive not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIUnlimited >> positive [
 
 	^positive
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIUnlimited >> printOn: aStream [
 	" Private - See superimplementor's comment "
 
