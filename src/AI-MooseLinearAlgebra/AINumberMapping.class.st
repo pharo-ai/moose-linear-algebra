@@ -2,23 +2,25 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AINumberMapping,
-	#superclass : #AIMapping,
+	#name : 'AINumberMapping',
+	#superclass : 'AIMapping',
 	#instVars : [
 		'back',
 		'forth'
 	],
-	#category : #'AI-MooseLinearAlgebra-Mapping'
+	#category : 'AI-MooseLinearAlgebra-Mapping',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Mapping'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AINumberMapping class >> new: aSize [
 	^ self new
 		setSize: aSize;
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AINumberMapping >> add: index [
 	"Maps an index to the next free key.
 	If the index is already mapped, throws an error.
@@ -38,7 +40,7 @@ AINumberMapping >> add: index [
 	^index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINumberMapping >> atKey: key ifAbsent: exceptionBlock [
 	"Returns index of an ordinal key,
 	that is maps backwards from new to old 'indices'."
@@ -48,13 +50,13 @@ AINumberMapping >> atKey: key ifAbsent: exceptionBlock [
 		do: [:ex | exceptionBlock value]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AINumberMapping >> do: aBlock [
 	
 	back do: aBlock
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINumberMapping >> initialize [
 	"Sets up instance variables.
 	back -- maps from ordinal keys to indices, ie. its values are indices (old indices).
@@ -64,7 +66,7 @@ AINumberMapping >> initialize [
 	forth := OrderedCollection new
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINumberMapping >> keyForName: name ifAbsent: exceptionBlock [
 	
 	^name isInteger
@@ -72,7 +74,7 @@ AINumberMapping >> keyForName: name ifAbsent: exceptionBlock [
 		ifFalse: [exceptionBlock value]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINumberMapping >> keyOf: anIndex ifAbsent: exceptionBlock [
 	"Returns ordinal key of a index.
 	that is maps forward from old to new indices."
@@ -82,38 +84,38 @@ AINumberMapping >> keyOf: anIndex ifAbsent: exceptionBlock [
 		do: [:ex | exceptionBlock value]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINumberMapping >> keys [
 	
 	^1 to: self size
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AINumberMapping >> lastIndex [
 	
 	^forth size
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AINumberMapping >> nameForKey: key [
 	
 	self error: 'key not found'
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 AINumberMapping >> replaceAll: aCollection [
 	
 	self initialize.
 	self addAll: aCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AINumberMapping >> setSize: size [
 	
 	back := forth := 1 to: size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AINumberMapping >> size [
 	
 	^back size

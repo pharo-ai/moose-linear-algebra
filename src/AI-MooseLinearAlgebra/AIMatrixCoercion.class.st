@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMatrixCoercion,
-	#superclass : #AIMatrix,
+	#name : 'AIMatrixCoercion',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'number'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixCoercion class >> with: aNumber [
 	
 	^(aNumber isKindOf: AIMatrix)
@@ -21,7 +23,7 @@ AIMatrixCoercion class >> with: aNumber [
 				yourself]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AIMatrixCoercion >> = matrix [
 	
 	^self
@@ -30,49 +32,49 @@ AIMatrixCoercion >> = matrix [
 		caseMatrix: [matrix = self]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIMatrixCoercion >> asNumber [
 	
 	^number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixCoercion >> at: row and: column [
 	
 	^number
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrixCoercion >> checkInvariant [
 	
 	^number respondsToArithmetic
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixCoercion >> columnSize [
 	
 	self noDimensionError
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIMatrixCoercion >> hasDimension: aDimension [
 	
 	^true
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixCoercion >> initializeRows: m columns: n [
 	
 	^self noDimensionError
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrixCoercion >> noDimensionError [
 	
 	^self error: 'Coerced matrices do not have dimension.'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMatrixCoercion >> printOn: aStream [
 	"Append to the argument aStream a sequence of characters that identifies the matrix."
 	
@@ -82,19 +84,19 @@ AIMatrixCoercion >> printOn: aStream [
 		print: number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixCoercion >> rowSize [
 	
 	self noDimensionError
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixCoercion >> setNumber: aNumber [
 	
 	^number := aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrixCoercion >> switch: matrix caseCoercion: coercionBlock caseMatrix: matrixBlock [
 	
 	^(matrix isKindOf: AIMatrixCoercion)
@@ -102,7 +104,7 @@ AIMatrixCoercion >> switch: matrix caseCoercion: coercionBlock caseMatrix: matri
 		ifFalse: [matrixBlock value]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrixCoercion >> with: matrix affect: aBlock [
 	
 	^self
@@ -114,7 +116,7 @@ AIMatrixCoercion >> with: matrix affect: aBlock [
 		caseMatrix: [self error]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrixCoercion >> with: matrix collect: aBlock [
 	
 	^self
@@ -131,7 +133,7 @@ AIMatrixCoercion >> with: matrix collect: aBlock [
 				collect: [:a :b | aBlock value: b value: a]]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIMatrixCoercion >> with: matrix do: aBlock [
 	
 	^self

@@ -8,22 +8,24 @@ Instance Variables:
 
 "
 Class {
-	#name : #AISparseVector,
-	#superclass : #AIVector,
+	#name : 'AISparseVector',
+	#superclass : 'AIVector',
 	#instVars : [
 		'size',
 		'contents'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 AISparseVector >> addLast [
 	
 	size := size + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISparseVector >> at: anIndex [
 	
 	| spot |
@@ -33,7 +35,7 @@ AISparseVector >> at: anIndex [
 		ifFalse: [0]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISparseVector >> at: anIndex put: aNumber [
 	
 	aNumber isZero
@@ -42,7 +44,7 @@ AISparseVector >> at: anIndex put: aNumber [
 	^aNumber
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AISparseVector >> collect: aBlock [
 	"Evaluate aBlock with each of the values of the receiver as the  
 	argument.  Collect the resulting values into a collection that is like 
@@ -56,13 +58,13 @@ AISparseVector >> collect: aBlock [
 	^newCollection
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 AISparseVector >> distByAngle: aVector [
 	
 	^1 - (self cosine: aVector)
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AISparseVector >> doSparseWithIndex: aBlock [
 	
 	contents
@@ -73,7 +75,7 @@ AISparseVector >> doSparseWithIndex: aBlock [
 				value: each key]
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 AISparseVector >> dotProduct: aVector [
 	
 	| sum otherValueBlock |
@@ -88,19 +90,19 @@ AISparseVector >> dotProduct: aVector [
 	^sum
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AISparseVector >> initializeContents: anAssociationArray [
 	
 	contents := anAssociationArray
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AISparseVector >> initializeSize: aSize [
 	size := aSize.
 	contents := OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AISparseVector >> internalIndexOf: anIndex [
 	"Searchs for the internal index of anIndex with O(log n) using binary search, returns
 	either the internal index of anIndex or, if anIndex is not found, the negated internal 
@@ -122,7 +124,7 @@ AISparseVector >> internalIndexOf: anIndex [
 	^low negated
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AISparseVector >> removeValueAt: anIndex [
 	
 	| spot |
@@ -130,7 +132,7 @@ AISparseVector >> removeValueAt: anIndex [
 	spot > 0 ifTrue: [contents removeIndex: spot]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AISparseVector >> setValue: aNumber at: anIndex [
 	
 	| spot |
@@ -143,19 +145,19 @@ AISparseVector >> setValue: aNumber at: anIndex [
 				beforeIndex: spot negated]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISparseVector >> size [
 	
 	^size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISparseVector >> sparseSize [
 	
 	^contents size
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 AISparseVector >> sum [
 	
 	^contents

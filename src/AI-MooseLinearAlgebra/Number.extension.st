@@ -1,6 +1,6 @@
-Extension { #name : #Number }
+Extension { #name : 'Number' }
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> checkForOldSyntax: t1 with: t2 on: t3 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -29,7 +29,7 @@ Number class >> checkForOldSyntax: t1 with: t2 on: t3 [
 	^t2
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> chooseFloatRepresentationFor: t1 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -39,7 +39,7 @@ Number class >> chooseFloatRepresentationFor: t1 [
 	^ Float
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> chooseFloatRepresentationFor: t1 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -49,7 +49,7 @@ Number >> chooseFloatRepresentationFor: t1 [
 	^ Float
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> coerce: t1 precision: t2 exponent: t3 exponentChar: t4 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -60,7 +60,7 @@ Number class >> coerce: t1 precision: t2 exponent: t3 exponentChar: t4 [
 	^ (self zero coerce: t1) * (10 raisedTo: t3)
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> coerce: t1 to: t2 precision: t3 exponent: t4 exponentChar: t5 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -70,19 +70,19 @@ Number class >> coerce: t1 to: t2 precision: t3 exponent: t4 exponentChar: t5 [
 	^t2 coerce: t1 precision: t3 exponent: t4 exponentChar: t5
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> differenceFromMatrix: aMatrix [
 	
 	^aMatrix collect: [:a | a - self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> differenceFromVector: aVector [
 	
 	^aVector collect: [:a | a - self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> dist: aNumber [
 
 	^self < aNumber
@@ -90,31 +90,31 @@ Number >> dist: aNumber [
 		ifFalse: [ self - aNumber ]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> productFromMatrix: aMatrix [
 	
 	^aMatrix collect: [:a | a * self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> productFromVector: aVector [
 	
 	^aVector collect: [:a | a * self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> quotientFromMatrix: aMatrix [
 	
 	^aMatrix collect: [:a | a / self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> quotientFromVector: aVector [
 	
 	^aVector collect: [:a | a / self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> readIntegerFrom: t1 radix: t2 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -133,7 +133,7 @@ Number class >> readIntegerFrom: t1 radix: t2 [
 	^t4
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> readSmalltalkAndCFloat: integerPart from: aStream [
 	"Answer an instance of me as described on the stream, aStream."
 
@@ -185,7 +185,7 @@ Number class >> readSmalltalkAndCFloat: integerPart from: aStream [
 		exponentChar: eChar
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> readSmalltalkAndCSyntaxFrom: aStream [
 	"Answer an instance of me as described on the stream, aStream."
 	
@@ -205,7 +205,7 @@ Number class >> readSmalltalkAndCSyntaxFrom: aStream [
 		ifFalse: [value]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> readSmalltalkRadix: t1 from: t2 [
 	"	***This is decompiled code.*** 
 	The source was unavailable because the source pointer appears to point 
@@ -224,19 +224,19 @@ Number class >> readSmalltalkRadix: t1 from: t2 [
 	^self readIntegerFrom: t2 radix: t1
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> sumFromMatrix: aMatrix [
 	
 	^aMatrix collect: [:a | a + self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number >> sumFromVector: aVector [
 	
 	^aVector collect: [:a | a + self]
 ]
 
-{ #category : #'*AI-MooseLinearAlgebra' }
+{ #category : '*AI-MooseLinearAlgebra' }
 Number class >> zero [
 	^ 0
 ]

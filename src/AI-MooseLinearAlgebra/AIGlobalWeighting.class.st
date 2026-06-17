@@ -1,26 +1,28 @@
 Class {
-	#name : #AIGlobalWeighting,
-	#superclass : #AIWeighting,
+	#name : 'AIGlobalWeighting',
+	#superclass : 'AIWeighting',
 	#instVars : [
 		'globalFrequencies',
 		'documentFrequencies'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #weighting }
+{ #category : 'weighting' }
 AIGlobalWeighting >> documentFrequency: aVector [
 	
 	^aVector sparseSize
 ]
 
-{ #category : #weighting }
+{ #category : 'weighting' }
 AIGlobalWeighting >> forTerm: aVector [
 	
 	^self subclassResponsibility
 ]
 
-{ #category : #weighting }
+{ #category : 'weighting' }
 AIGlobalWeighting >> globalFrequency: aVector [
 	
 	^aVector sum

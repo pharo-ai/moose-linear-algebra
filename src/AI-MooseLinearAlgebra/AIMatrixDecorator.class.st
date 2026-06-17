@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMatrixDecorator,
-	#superclass : #AIMatrix,
+	#name : 'AIMatrixDecorator',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'matrix'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixDecorator class >> on: aMatrix [
 	
 	^(self basicNew)
@@ -18,49 +20,49 @@ AIMatrixDecorator class >> on: aMatrix [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixDecorator >> at: row and: column [
 	
 	^matrix at: row and: column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixDecorator >> at: row and: column put: aNumber [
 	
 	^matrix at: row and: column put: aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIMatrixDecorator >> checkInvariant [
 	
 	^matrix checkInvariant
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixDecorator >> columnSize [
 	
 	^matrix columnSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixDecorator >> initializeRows: m columns: n [
 	
 	self shouldNotImplement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixDecorator >> rowSize [
 	
 	^matrix rowSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixDecorator >> setMatrix: aMatrix [
 	
 	^matrix := aMatrix
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixDecorator >> species [
 	
 	^matrix species

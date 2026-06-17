@@ -2,17 +2,19 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMatrixView,
-	#superclass : #AIMatrixDecorator,
+	#name : 'AIMatrixView',
+	#superclass : 'AIMatrixDecorator',
 	#instVars : [
 		'rowSize',
 		'columnSize',
 		'mapBlock'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixView class >> from: top to: bottom on: matrix [
 	
 	^(self new: bottom - top + 1)
@@ -21,7 +23,7 @@ AIMatrixView class >> from: top to: bottom on: matrix [
 		yourself
 ]
 
-{ #category : #'As yet unclassified' }
+{ #category : 'As yet unclassified' }
 AIMatrixView class >> fromColumn: start to: end on: matrix [
 	
 	^self
@@ -30,7 +32,7 @@ AIMatrixView class >> fromColumn: start to: end on: matrix [
 		on: matrix
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixView class >> transposeOn: matrix [
 	
 	^(self new: matrix dimension transpose)
@@ -39,38 +41,38 @@ AIMatrixView class >> transposeOn: matrix [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixView >> at: row and: column [
 	
 	^matrix atPoint: (mapBlock value: row value: column)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixView >> at: row and: column put: aNumber [
 	
 	self noModificationError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixView >> columnSize [
 	
 	^columnSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixView >> initializeRows: m columns: n [
 	
 	rowSize := m.
 	columnSize := n
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixView >> rowSize [
 	
 	^rowSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixView >> setMapBlock: block [
 	
 	^mapBlock := block

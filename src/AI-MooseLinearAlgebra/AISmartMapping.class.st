@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AISmartMapping,
-	#superclass : #AINumberMapping,
+	#name : 'AISmartMapping',
+	#superclass : 'AINumberMapping',
 	#instVars : [
 		'parent'
 	],
-	#category : #'AI-MooseLinearAlgebra-Mapping'
+	#category : 'AI-MooseLinearAlgebra-Mapping',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Mapping'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AISmartMapping class >> on: parent [
 	
 	^(self new)
@@ -18,13 +20,13 @@ AISmartMapping class >> on: parent [
 		yourself
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AISmartMapping >> isRoot [
 	
 	^parent isNil
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AISmartMapping >> keyForName: name ifAbsent: exceptionBlock [
 	
 	^name isInteger
@@ -36,7 +38,7 @@ AISmartMapping >> keyForName: name ifAbsent: exceptionBlock [
 					[self keyOf: (parent keyForName: name ifAbsent: exceptionBlock)]]
 ]
 
-{ #category : #'accessing - name' }
+{ #category : 'accessing - name' }
 AISmartMapping >> nameForKey: key [
 	
 	^self isRoot
@@ -44,7 +46,7 @@ AISmartMapping >> nameForKey: key [
 		ifFalse: [parent nameForKey: (self atKey: key)]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AISmartMapping >> setParent: mapping [
 	
 	^parent := mapping

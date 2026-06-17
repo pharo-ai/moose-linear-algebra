@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIColumnMatrix,
-	#superclass : #AIMatrix,
+	#name : 'AIColumnMatrix',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'columns'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIColumnMatrix class >> onColumns: columnCollection [
 	| new |
 	new := self basicNew.
@@ -19,19 +21,19 @@ AIColumnMatrix class >> onColumns: columnCollection [
 	^ new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIColumnMatrix >> at: row and: column [
 	
 	^(columns at: column) at: row
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIColumnMatrix >> at: row and: column put: aNumber [
 	
 	^(columns at: column) at: row put: aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIColumnMatrix >> checkInvariant [
 	
 	^columns isCollection
@@ -40,30 +42,30 @@ AIColumnMatrix >> checkInvariant [
 				and: [columns allSatisfy: [:vector | vector size = self rowSize]]]
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIColumnMatrix >> columnAt: column [
 	
 	^columns at: column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIColumnMatrix >> columnSize [
 	
 	^columns size
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIColumnMatrix >> columns [
 	
 	^columns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIColumnMatrix >> columns: anObject [
 	columns := anObject
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIColumnMatrix >> initializeRows: m columns: n [
 	
 	columns := Array new: n.
@@ -76,7 +78,7 @@ AIColumnMatrix >> initializeRows: m columns: n [
 				put: (self vectorSpecies new: m)]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIColumnMatrix >> rowSize [
 	
 	^columns isEmpty

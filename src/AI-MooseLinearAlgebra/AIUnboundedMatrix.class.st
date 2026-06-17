@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIUnboundedMatrix,
-	#superclass : #AIMatrixDecorator,
+	#name : 'AIUnboundedMatrix',
+	#superclass : 'AIMatrixDecorator',
 	#instVars : [
 		'backgroundValue'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIUnboundedMatrix class >> on: matrix with: defaultValue [
 	
 	^(self on: matrix)
@@ -18,7 +20,7 @@ AIUnboundedMatrix class >> on: matrix with: defaultValue [
 		yourself
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIUnboundedMatrix >> at: row and: column [
 	
 	^[matrix at: row and: column]
@@ -26,7 +28,7 @@ AIUnboundedMatrix >> at: row and: column [
 		do: [:ex | backgroundValue]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIUnboundedMatrix >> at: row and: column put: aNumber [
 	
 	^[matrix at: row and: column put: aNumber]
@@ -34,13 +36,13 @@ AIUnboundedMatrix >> at: row and: column put: aNumber [
 		do: [:ex | backgroundValue]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIUnboundedMatrix >> backgroundValue [
 	
 	^backgroundValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIUnboundedMatrix >> backgroundValue: anObject [
 	
 	backgroundValue := anObject

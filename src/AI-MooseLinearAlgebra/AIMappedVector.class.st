@@ -2,21 +2,23 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMappedVector,
-	#superclass : #AIVectorDecorator,
+	#name : 'AIMappedVector',
+	#superclass : 'AIVectorDecorator',
 	#instVars : [
 		'indices'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedVector class >> on: aVector [
 	
 	^self on: aVector indices: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedVector class >> on: aVector indices: aReindexing [
 	
 	^(super on: aVector)
@@ -24,13 +26,13 @@ AIMappedVector class >> on: aVector indices: aReindexing [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedVector >> at: anIndex [
 	
 	^vector at: (indices at: anIndex)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedVector >> at: anIndex put: aNumber [
 	
 	^vector
@@ -38,13 +40,13 @@ AIMappedVector >> at: anIndex put: aNumber [
 		put: aNumber
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMappedVector >> setIndices: aReindexing [
 	
 	indices := aReindexing ifNil: [AINumberMapping new: vector size]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedVector >> size [
 	
 	^indices size

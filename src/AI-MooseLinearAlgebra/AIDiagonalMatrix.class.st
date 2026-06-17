@@ -2,12 +2,14 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIDiagonalMatrix,
-	#superclass : #AISymetricMatrix,
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#name : 'AIDiagonalMatrix',
+	#superclass : 'AISymetricMatrix',
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIDiagonalMatrix class >> withDiagonal: vector [
 	
 	| newMatrix |
@@ -23,7 +25,7 @@ AIDiagonalMatrix class >> withDiagonal: vector [
 	^newMatrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIDiagonalMatrix >> at: row and: column [
 	
 	^row = column
@@ -31,7 +33,7 @@ AIDiagonalMatrix >> at: row and: column [
 		ifFalse: [0]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIDiagonalMatrix >> at: row and: column put: aNumber [
 	
 	^row = column
@@ -43,13 +45,13 @@ AIDiagonalMatrix >> at: row and: column put: aNumber [
 			aNumber]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIDiagonalMatrix >> checkInvariant [
 	
 	^partialColumns isCollection	"(DiagonalMatrix new: 10) checkInvariant"
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIDiagonalMatrix >> initializeRows: m columns: n [
 	
 	m = n ifFalse: [Array new noMatchError].

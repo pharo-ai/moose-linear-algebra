@@ -2,41 +2,43 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMappedMatrix,
-	#superclass : #AIMatrixDecorator,
+	#name : 'AIMappedMatrix',
+	#superclass : 'AIMatrixDecorator',
 	#instVars : [
 		'columnMap',
 		'rowMap'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedMatrix class >> on: aMatrix [
 	
 	^self on: aMatrix rowMap: nil columnMap: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedMatrix class >> on: aMatrix columnMap: columnReindexing [
 	
 	^self on: aMatrix rowMap: nil columnMap: columnReindexing
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedMatrix class >> on: aMatrix map: aReindexing [
 	
 	[aMatrix isSquare] assert.
 	^self on: aMatrix rowMap: aReindexing columnMap: aReindexing
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedMatrix class >> on: aMatrix rowMap: rowReindexing [
 	
 	^self on: aMatrix rowMap: rowReindexing columnMap: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMappedMatrix class >> on: aMatrix rowMap: rowReindexing columnMap: columnReindexing [
 	
 	^(super on: aMatrix)
@@ -45,7 +47,7 @@ AIMappedMatrix class >> on: aMatrix rowMap: rowReindexing columnMap: columnReind
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedMatrix >> at: row and: column [
 	
 	^matrix
@@ -53,7 +55,7 @@ AIMappedMatrix >> at: row and: column [
 		and: (columnMap at: column)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedMatrix >> at: row and: column put: aNumber [
 	
 	^matrix
@@ -62,25 +64,25 @@ AIMappedMatrix >> at: row and: column put: aNumber [
 		put: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedMatrix >> columnSize [
 	
 	^columnMap size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMappedMatrix >> rowSize [
 	
 	^rowMap size
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMappedMatrix >> setColumnMap: mapping [
 	
 	columnMap := mapping ifNil: [AINumberMapping new: matrix columnSize]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMappedMatrix >> setRowMap: mapping [
 	
 	rowMap := mapping ifNil: [AINumberMapping new: matrix rowSize]

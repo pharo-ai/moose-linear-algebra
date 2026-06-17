@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIRowMatrix,
-	#superclass : #AIMatrix,
+	#name : 'AIRowMatrix',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'rows'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 AIRowMatrix class >> onRows: rowCollection [
 	| new |
 	new := self basicNew.
@@ -19,19 +21,19 @@ AIRowMatrix class >> onRows: rowCollection [
 	^ new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIRowMatrix >> at: row and: column [
 	
 	^(rows at: row) at: column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIRowMatrix >> at: row and: column put: aNumber [
 	
 	^(rows at: row) at: column put: aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIRowMatrix >> checkInvariant [
 	
 	^rows isCollection
@@ -40,7 +42,7 @@ AIRowMatrix >> checkInvariant [
 				and: [rows allSatisfy: [:row | row size = self columnSize]]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIRowMatrix >> columnSize [
 	
 	^rows isEmpty
@@ -48,7 +50,7 @@ AIRowMatrix >> columnSize [
 		ifFalse: [rows first size]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIRowMatrix >> initializeRows: m columns: n [
 	
 	rows := Array new: m.
@@ -61,25 +63,25 @@ AIRowMatrix >> initializeRows: m columns: n [
 				put: (self vectorSpecies new: n)]
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIRowMatrix >> rowAt: rowIndex [
 	
 	^rows at: rowIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIRowMatrix >> rowSize [
 	
 	^rows size
 ]
 
-{ #category : #'accessing vectorwise' }
+{ #category : 'accessing vectorwise' }
 AIRowMatrix >> rows [
 	
 	^rows
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIRowMatrix >> rows: anObject [
 	rows := anObject
 ]

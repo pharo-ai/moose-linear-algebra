@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIVectorCoercion,
-	#superclass : #AIVector,
+	#name : 'AIVectorCoercion',
+	#superclass : 'AIVector',
 	#instVars : [
 		'number'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIVectorCoercion class >> with: aNumber [
 	
 	^(aNumber isKindOf: AIVector)
@@ -21,37 +23,37 @@ AIVectorCoercion class >> with: aNumber [
 				yourself]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 AIVectorCoercion >> asNumber [
 	
 	^number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIVectorCoercion >> at: index [
 	
 	^number
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AIVectorCoercion >> hasSize: aSize [
 	
 	^true
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIVectorCoercion >> initializeSize: aSize [
 	
 	^self noDimensionError
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIVectorCoercion >> noDimensionError [
 	
 	^self error: 'Coerced matrices do not have dimension.'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIVectorCoercion >> printOn: aStream [
 	
 	aStream
@@ -60,25 +62,25 @@ AIVectorCoercion >> printOn: aStream [
 		print: number
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIVectorCoercion >> setNumber: aNumber [
 	
 	^number := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIVectorCoercion >> size [
 	
 	^self noDimensionError
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 AIVectorCoercion >> sum [
 	
 	^self noDimensionError
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIVectorCoercion >> switch: matrix caseCoercion: coercionBlock caseVector: vectorBlock [
 	
 	^(matrix isKindOf: AIVectorCoercion)
@@ -86,7 +88,7 @@ AIVectorCoercion >> switch: matrix caseCoercion: coercionBlock caseVector: vecto
 		ifFalse: [vectorBlock value]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIVectorCoercion >> with: vector affect: aBlock [
 	
 	^self
@@ -98,7 +100,7 @@ AIVectorCoercion >> with: vector affect: aBlock [
 		caseVector: [self error]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIVectorCoercion >> with: vector collect: aBlock [
 	
 	^self
@@ -115,7 +117,7 @@ AIVectorCoercion >> with: vector collect: aBlock [
 				collect: [:a :b | aBlock value: b value: a]]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AIVectorCoercion >> with: vector do: aBlock [
 	
 	^self

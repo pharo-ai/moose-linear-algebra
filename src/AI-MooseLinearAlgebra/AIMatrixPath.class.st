@@ -2,17 +2,19 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIMatrixPath,
-	#superclass : #AIVector,
+	#name : 'AIMatrixPath',
+	#superclass : 'AIVector',
 	#instVars : [
 		'matrix',
 		'mapBlock',
 		'size'
 	],
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixPath class >> column: columnIndex on: matrix [
 	
 	^(self new: matrix rowSize)
@@ -21,7 +23,7 @@ AIMatrixPath class >> column: columnIndex on: matrix [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixPath class >> diagonalOn: matrix [
 	
 	[matrix isSquare] assert.
@@ -31,7 +33,7 @@ AIMatrixPath class >> diagonalOn: matrix [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMatrixPath class >> row: rowIndex on: matrix [
 	
 	^(self new: matrix columnSize)
@@ -40,13 +42,13 @@ AIMatrixPath class >> row: rowIndex on: matrix [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixPath >> at: index [
 	
 	^matrix atPoint: (mapBlock value: index)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixPath >> at: index put: aNumber [
 	
 	^matrix
@@ -54,31 +56,31 @@ AIMatrixPath >> at: index put: aNumber [
 		put: aNumber
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixPath >> initializeSize: aSize [
 	
 	^size := aSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixPath >> setMapBlock: aBlock [
 	
 	^mapBlock := aBlock
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixPath >> setMatrix: aMatrix [
 	
 	^matrix := aMatrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMatrixPath >> size [
 	
 	^size
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMatrixPath >> species [
 	
 	^matrix vectorSpecies

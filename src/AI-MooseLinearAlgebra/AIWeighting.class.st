@@ -1,10 +1,12 @@
 Class {
-	#name : #AIWeighting,
-	#superclass : #Object,
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#name : 'AIWeighting',
+	#superclass : 'Object',
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIWeighting >> abbreviation [
 	
 	^self subclassResponsibility

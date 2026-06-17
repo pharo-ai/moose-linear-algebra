@@ -2,30 +2,32 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AISparseRowMatrix,
-	#superclass : #AIRowMatrix,
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#name : 'AISparseRowMatrix',
+	#superclass : 'AIRowMatrix',
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 AISparseRowMatrix class >> vectorSpecies [
 	
 	^AISparseVector
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AISparseRowMatrix >> addColumn [
 	
 	rows do: #addLast
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 AISparseRowMatrix >> addRow [
 	
 	rows := rows copyWith: (self vectorSpecies new: self columnSize)
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AISparseRowMatrix >> doSparseWithIndices: trinaryBlock [
 	
 	rows
@@ -37,13 +39,13 @@ AISparseRowMatrix >> doSparseWithIndices: trinaryBlock [
 	^self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AISparseRowMatrix >> isZeroAt: row and: column [
 	
 	^(rows at: row) isZeroAt: column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISparseRowMatrix >> sparseSize [
 	
 	^rows
@@ -51,7 +53,7 @@ AISparseRowMatrix >> sparseSize [
 		into: [:sum :each | sum + each sparseSize]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AISparseRowMatrix >> storeOn: stream [
 	
 	| text |

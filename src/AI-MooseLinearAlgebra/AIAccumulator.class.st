@@ -2,18 +2,20 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIAccumulator,
-	#superclass : #Object,
+	#name : 'AIAccumulator',
+	#superclass : 'Object',
 	#instVars : [
 		'accumulateBlock',
 		'size',
 		'value',
 		'index'
 	],
-	#category : #'AI-MooseLinearAlgebra-Accumulator'
+	#category : 'AI-MooseLinearAlgebra-Accumulator',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Accumulator'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> extreme [
 	
 	^self
@@ -25,7 +27,7 @@ AIAccumulator class >> extreme [
 				ifFalse: [each]]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> maximum [
 	
 	^self
@@ -33,7 +35,7 @@ AIAccumulator class >> maximum [
 		using: [:max :each | max max: each]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> minimum [
 	
 	^self
@@ -41,13 +43,13 @@ AIAccumulator class >> minimum [
 		using: [:min :each | min min: each]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> new [
 	
 	self shouldNotImplement
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> squaredSum [
 	
 	^self
@@ -55,7 +57,7 @@ AIAccumulator class >> squaredSum [
 		using: [:sum :each | sum + each squared]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> sum [
 	
 	^self
@@ -63,7 +65,7 @@ AIAccumulator class >> sum [
 		using: [:sum :each | sum + each]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> using: anAccumulationBlock [
 	
 	^self
@@ -71,7 +73,7 @@ AIAccumulator class >> using: anAccumulationBlock [
 		using: anAccumulationBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIAccumulator class >> value: initialValue using: anAccumulationBlock [
 	
 	^(self basicNew)
@@ -80,47 +82,47 @@ AIAccumulator class >> value: initialValue using: anAccumulationBlock [
 		yourself
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> accumulate: aValue [
 	
 	size := size + 1.
 	^value := accumulateBlock value: value value: aValue
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> accumulate: aValue withIndex: anIndex [
 	size := size + 1.
 	^ value = (value := accumulateBlock value: value value: aValue)
 		ifFalse: [ index := anIndex ]
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> add: aValue [
 	
 	^self accumulate: aValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIAccumulator >> average [
 	
 	^value / size
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> enumerate: aCollection [
 	
 	aCollection do: [:each | self accumulate: each].
 	^value
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> enumerate: aCollection atAll: indices [
 	
 	indices do: [:key | self accumulate: (aCollection at: key)].
 	^value
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> enumerate: aMatrix atAll: rowIndices andAll: columnIndices [
 	
 	rowIndices
@@ -131,7 +133,7 @@ AIAccumulator >> enumerate: aMatrix atAll: rowIndices andAll: columnIndices [
 	^value
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> enumerateWithIndex: aSequencableCollection [
 	
 	aSequencableCollection
@@ -139,7 +141,7 @@ AIAccumulator >> enumerateWithIndex: aSequencableCollection [
 	^value
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> from: start to: end do: aBlock [
 	
 	start
@@ -148,13 +150,13 @@ AIAccumulator >> from: start to: end do: aBlock [
 	^value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIAccumulator >> index [
 	
 	^index
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIAccumulator >> merge: anAccumulator [
 	
 	size := size + anAccumulator size.
@@ -163,7 +165,7 @@ AIAccumulator >> merge: anAccumulator [
 		withIndex: anAccumulator index
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIAccumulator >> resetValue: aValue [
 	
 	size := 0.
@@ -171,31 +173,31 @@ AIAccumulator >> resetValue: aValue [
 	value := aValue
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIAccumulator >> setAccumulateBlock: aBlock [
 	
 	accumulateBlock := aBlock
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIAccumulator >> setValue: aValue [
 	size := 0.
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIAccumulator >> size [
 	
 	^size
 ]
 
-{ #category : #accumulate }
+{ #category : 'accumulate' }
 AIAccumulator >> upTo: end do: aBlock [
 	
 	^self from: 1 to: end do: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIAccumulator >> value [
 	
 	^value

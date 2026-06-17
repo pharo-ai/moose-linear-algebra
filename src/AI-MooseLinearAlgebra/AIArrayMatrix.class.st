@@ -2,23 +2,25 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIArrayMatrix,
-	#superclass : #AIMatrix,
+	#name : 'AIArrayMatrix',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'array',
 		'columnSize',
 		'rowSize'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIArrayMatrix >> at: row and: column [
 	
 	^array at: (row - 1) * self columnSize + column
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIArrayMatrix >> at: row and: column put: aNumber [
 	
 	^array
@@ -26,19 +28,19 @@ AIArrayMatrix >> at: row and: column put: aNumber [
 		put: aNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIArrayMatrix >> checkInvariant [
 	
 	^array isCollection and: [(array size = rowSize) * columnSize]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIArrayMatrix >> columnSize [
 	
 	^columnSize
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIArrayMatrix >> initializeRows: n columns: m [
 	
 	rowSize := n.
@@ -47,7 +49,7 @@ AIArrayMatrix >> initializeRows: n columns: m [
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIArrayMatrix >> rowSize [
 	
 	^rowSize

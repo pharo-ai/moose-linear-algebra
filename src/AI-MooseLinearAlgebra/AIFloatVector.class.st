@@ -2,26 +2,28 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AIFloatVector,
-	#superclass : #AIVector,
-	#type : #variable,
-	#category : #'AI-MooseLinearAlgebra-Vector'
+	#name : 'AIFloatVector',
+	#superclass : 'AIVector',
+	#type : 'variable',
+	#category : 'AI-MooseLinearAlgebra-Vector',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Vector'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIFloatVector class >> new: size [
 	
 	^self basicNew: size "<< 2"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIFloatVector >> at: anIndex [
 	
 	"^self floatAt: (anIndex bitShift: 2) - 3"
 	^ (self basicAt: anIndex) 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIFloatVector >> at: anIndex put: aNumber [
 	
 	"^self
@@ -31,7 +33,7 @@ AIFloatVector >> at: anIndex put: aNumber [
 	^ self basicAt: anIndex put: aNumber asFloat
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIFloatVector >> floatAt: byteIndex [
 	
 	<primitive: 548>
@@ -39,7 +41,7 @@ AIFloatVector >> floatAt: byteIndex [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AIFloatVector >> floatAt: byteIndex put: float [
 	
 	<primitive: 549>
@@ -48,7 +50,7 @@ AIFloatVector >> floatAt: byteIndex put: float [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIFloatVector >> size [
 	
 	^self basicSize" >> 2"

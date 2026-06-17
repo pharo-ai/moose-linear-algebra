@@ -2,15 +2,17 @@
 Copyright (c), 2004-2007 Adrian Kuhn. This class is part of Hapax. Hapax is distributed under BSD License, see package comment.
 "
 Class {
-	#name : #AISymetricMatrix,
-	#superclass : #AIMatrix,
+	#name : 'AISymetricMatrix',
+	#superclass : 'AIMatrix',
 	#instVars : [
 		'partialColumns'
 	],
-	#category : #'AI-MooseLinearAlgebra-Matrix'
+	#category : 'AI-MooseLinearAlgebra-Matrix',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Matrix'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> at: row and: column [
 	
 	^row < column
@@ -18,7 +20,7 @@ AISymetricMatrix >> at: row and: column [
 		ifFalse: [(partialColumns at: row) at: column]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> at: row and: column put: aNumber [
 	
 	^row < column
@@ -26,7 +28,7 @@ AISymetricMatrix >> at: row and: column put: aNumber [
 		ifFalse: [(partialColumns at: row) at: column put: aNumber]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AISymetricMatrix >> checkInvariant [
 	
 	^partialColumns isCollection
@@ -38,13 +40,13 @@ AISymetricMatrix >> checkInvariant [
 						allSatisfy: [:index | (partialColumns at: index) size = index]]]	"(SymetricMatrix new: 10) checkInvariant"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> columnSize [
 	
 	^partialColumns size
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AISymetricMatrix >> initializeRows: m columns: n [
 	
 	m = n ifFalse: [Array new noMatchError].
@@ -58,44 +60,44 @@ AISymetricMatrix >> initializeRows: m columns: n [
 				put: (self vectorSpecies new: index)]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AISymetricMatrix >> isSquare [
 	"Each symatric matrix is square."
 	
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 AISymetricMatrix >> isSymetric [
 	"Each symetric matrix is symatric."
 	
 	^true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> partialColumns [
 	^ partialColumns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> partialColumns: anObject [
 	partialColumns := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISymetricMatrix >> rowSize [
 	
 	^partialColumns size	"since we are square"
 ]
 
-{ #category : #'matrix functions' }
+{ #category : 'matrix functions' }
 AISymetricMatrix >> transposed [
 	"Answer self, since symatric matrices are invariant under transposition."
 	
 	^self
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 AISymetricMatrix >> upperTriangleDoWithIndices: aBlock [
 	
 	1

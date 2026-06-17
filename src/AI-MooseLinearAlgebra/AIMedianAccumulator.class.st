@@ -1,19 +1,21 @@
 Class {
-	#name : #AIMedianAccumulator,
-	#superclass : #Object,
+	#name : 'AIMedianAccumulator',
+	#superclass : 'Object',
 	#instVars : [
 		'values'
 	],
-	#category : #'AI-MooseLinearAlgebra-Accumulator'
+	#category : 'AI-MooseLinearAlgebra-Accumulator',
+	#package : 'AI-MooseLinearAlgebra',
+	#tag : 'Accumulator'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMedianAccumulator class >> new [
 	
 	^self basicNew initialize
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AIMedianAccumulator class >> withAll: aCollection [
 	
 	^(self new)
@@ -21,43 +23,43 @@ AIMedianAccumulator class >> withAll: aCollection [
 		yourself
 ]
 
-{ #category : #accumulating }
+{ #category : 'accumulating' }
 AIMedianAccumulator >> add: value [
 	
 	values add: value
 ]
 
-{ #category : #accumulating }
+{ #category : 'accumulating' }
 AIMedianAccumulator >> addAll: aCollection [
 	
 	values addAll: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMedianAccumulator >> bottom [
 	
 	^values last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMedianAccumulator >> firstQuartil [
 	
 	^values at: (values size / 4) asInteger
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 AIMedianAccumulator >> initialize [
 	
 	values := SortedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMedianAccumulator >> median [
 	
 	^values at: (values size / 2) asInteger
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AIMedianAccumulator >> printOn: aStream [
 	
 	aStream
@@ -81,19 +83,19 @@ AIMedianAccumulator >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMedianAccumulator >> thirdQuartil [
 	
 	^values at: (values size / 4 * 3) asInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIMedianAccumulator >> top [
 	
 	^values first
 ]
 
-{ #category : #accumulating }
+{ #category : 'accumulating' }
 AIMedianAccumulator >> value: value [
 	
 	values add: value
